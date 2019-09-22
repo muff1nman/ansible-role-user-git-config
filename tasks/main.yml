@@ -1,0 +1,14 @@
+---
+- name: Setting up User Variables
+  discover_user_vars:
+    user: "{{ ansible_env.USER }}"
+  check_mode: no
+  register: desktop_user_vars
+- name: Copy global gitignore
+  copy:
+    src: gitignore_global
+    dest: "{{ desktop_user_vars.dir }}/.gitignore_global"
+- name: Configure user local git configs
+  template:
+    src: gitconfig
+    dest: "{{ desktop_user_vars.dir }}/.gitconfig"

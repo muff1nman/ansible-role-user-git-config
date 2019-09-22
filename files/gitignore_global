@@ -1,0 +1,12 @@
+*.swp
+.~lock*
+/tags
+git_log.txt
+nohup.out
+Thumbs.db
+*.iml
+*.idea
+.fuse_hidden*
+.svn
+__pycache__
+.DS_Store
