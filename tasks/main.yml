@@ -7,3 +7,11 @@
   template:
     src: gitconfig
     dest: "{{ desktop_user_vars.dir }}/.gitconfig"
+- name: Clone git repos
+  include_tasks: clone_repo.yml
+  loop: "{{ clone_git_repos }}"
+  loop_control:
+    loop_var: git_clone
+  when:
+    - limited_internet is not defined
+    - skip_local_server is not defined

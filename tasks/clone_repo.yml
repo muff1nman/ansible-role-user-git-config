@@ -1,0 +1,17 @@
+- name: Calculate dest directory
+  set_fact:
+    repo_dest: "{{ desktop_user_vars.dir }}/Source/{{ git_clone.repo | urlsplit('hostname') }}/{{ git_clone.repo | urlsplit('path') | regex_replace('^/', '') | regex_replace('\\.git$','') }}"
+  when: git_clone.relative_to_home is undefined
+
+- name: Calculate dest directory
+  set_fact:
+    repo_dest: "{{ desktop_user_vars.dir }}/{{ git_clone.relative_to_home }}"
+  when: git_clone.relative_to_home is defined
+
+- name: Clone git repo
+  git:
+    clone: yes
+    repo: "{{ git_clone.repo }}"
+    update: no
+    dest: "{{ repo_dest }}"
+    version: "{{ git_clone.ref | default('HEAD') }}"
