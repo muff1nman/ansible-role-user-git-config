@@ -33,3 +33,5 @@
 	required = true
 [diff "gpg"]
 	textconv = gpg2 --decrypt
+[init]
+	defaultBranch = master
