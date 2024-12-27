@@ -4,7 +4,6 @@
 	signingkey = {{ git_signing_key }}
 [core]
 	excludesfile = {{desktop_user_vars.dir}}/.gitignore_global
-	editor = vim
 [pull]
 	ff = only
 [alias]
